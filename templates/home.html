@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>!!..Penguin..!!</title>
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Penguin Sex Prediction</h1>
+  <img src="https://media.istockphoto.com/id/1143808566/vector/diagram-showing-body-part-of-penguin.jpg?s=1024x1024&w=is&k=20&c=Wne8XvW9mssAh9IuK3TsSbXP_oshpNiqx8ri_Gl4RiI=" alt="diagram-showing-body-part-of-penguin" width="250" height="250">
+  <form action="{{ url_for('predict_datapoint')}}" method="post">
+      <input type="text" name="bill_length_mm" placeholder="bill_length_mm" required="required" /><br>
+    	<input type="text" name="bill_depth_mm" placeholder="bill_depth_mm" required="required" /><br>
+        <input type="text" name="flipper_length_mm" placeholder="flipper_length_mm" required="required" /><br>
+        <input type="text" name="body_mass_g" placeholder="body_mass_g" required="required" /><br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+<body>
+
+   <br>
+   <br>
+
+
+ </div>
+ {{result}}
+
+</body>
+</html>
