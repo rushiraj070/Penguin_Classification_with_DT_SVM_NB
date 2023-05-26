@@ -8,7 +8,7 @@ import pandas as pd
 application = Flask(__name__)
 app=application
 
-model = pickle.load(open("Model\classifier.pkl", "rb"))
+model = pickle.load(open("Model/classifier.pkl", "rb"))
 
 ## Route for homepage
 
