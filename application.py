@@ -8,7 +8,10 @@ import pandas as pd
 application = Flask(__name__)
 app=application
 
-model = pickle.load(open("Model/classifier.pkl", "rb"))
+dt_model = pickle.load(open("Model/decision_tree.pkl", "rb"))
+svm_model = pickle.load(open("Model/support_vector_tuned.pkl", "rb"))
+gnb_model = pickle.load(open("Model/gaussian_nb.pkl", "rb"))
+
 
 ## Route for homepage
 
@@ -28,8 +31,12 @@ def predict_datapoint():
         flipper_length_mm = float(request.form.get('flipper_length_mm'))
         body_mass_g = float(request.form.get('body_mass_g'))
 
-        predict=model.predict([[bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g]])
+        predict_dt = dt_model.predict([[bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g]])
+        predict_dt = svm_model.predict([[bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g]])
+        predict_gnb = gnb_model.predict([[bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g]])
        
+        predict = max(predict_dt, predict_dt, predict_gnb)
+
         if predict[0] == 1 :
             result = 'Yohoo..It is a BOY..!!'
         else:
